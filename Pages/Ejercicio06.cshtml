@@ -1,0 +1,33 @@
+@page
+@model Ejercicio06Model
+@{
+    ViewData["Title"] = "Ejercicio 06 - Inversión de 150 números";
+}
+<section class="exercise-page">
+    <header class="exercise-heading">
+        <p class="eyebrow">Práctica 06 · 150 posiciones</p>
+        <h1>Invertir un vector</h1>
+        <p class="exercise-copy">Copia los elementos en un segundo vector, empezando por el último valor del original.</p>
+    </header>
+    <partial name="_ExerciseError" model="Model.Error" />
+    <form method="post" class="exercise-form">
+        <label asp-for="Entrada" class="form-label">Valores enteros del vector</label>
+        <textarea asp-for="Entrada" class="form-control" rows="4" placeholder="150 enteros"></textarea>
+        <span class="form-hint">Escribe exactamente 150 enteros; vacío genera un ejemplo.</span>
+        <div class="form-actions">
+            <button class="btn btn-dark" asp-page-handler="Calcular">Invertir vector</button>
+            <button class="btn btn-outline-secondary" asp-page-handler="Generar">Generar ejemplo</button>
+        </div>
+    </form>
+    @if (Model.Mostrar)
+    {
+        <section class="exercise-results" aria-labelledby="result-title">
+            <h2 id="result-title">Vectores</h2>
+            <h3>Original (primeros 30 de @Model.Original.Length)</h3>
+            <div class="data-strip">@string.Join(", ", Model.Original.Take(30)) …</div>
+            <h3 class="mt-4">Invertido (primeros 30)</h3>
+            <div class="data-strip">@string.Join(", ", Model.Invertido.Take(30)) …</div>
+        </section>
+    }
+    <a class="back-link" asp-page="/Index">← Todas las prácticas</a>
+</section>

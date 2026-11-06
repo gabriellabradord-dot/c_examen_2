@@ -1,0 +1,38 @@
+@page
+@model Ejercicio05Model
+@{
+    ViewData["Title"] = "Ejercicio 05 - Conteo de 300 números";
+}
+<section class="exercise-page">
+    <header class="exercise-heading">
+        <p class="eyebrow">Práctica 05 · 300 posiciones</p>
+        <h1>Conteo y sumas por signo</h1>
+        <p class="exercise-copy">Cuenta ceros, positivos y negativos; calcula por separado las sumas de positivos y negativos.</p>
+    </header>
+    <partial name="_ExerciseError" model="Model.Error" />
+    <form method="post" class="exercise-form">
+        <label asp-for="Entrada" class="form-label">Valores enteros del vector</label>
+        <textarea asp-for="Entrada" class="form-control" rows="4" placeholder="300 enteros"></textarea>
+        <span class="form-hint">Escribe exactamente 300 enteros; vacío genera un ejemplo.</span>
+        <div class="form-actions">
+            <button class="btn btn-dark" asp-page-handler="Calcular">Clasificar valores</button>
+            <button class="btn btn-outline-secondary" asp-page-handler="Generar">Generar ejemplo</button>
+        </div>
+    </form>
+    @if (Model.Mostrar)
+    {
+        <section class="exercise-results" aria-labelledby="result-title">
+            <h2 id="result-title">Resumen</h2>
+            <div class="metric-grid">
+                <div class="metric"><span class="metric-label">Ceros</span><strong class="metric-value">@Model.Ceros</strong></div>
+                <div class="metric"><span class="metric-label">Negativos</span><strong class="metric-value">@Model.Negativos</strong></div>
+                <div class="metric"><span class="metric-label">Positivos</span><strong class="metric-value">@Model.Positivos</strong></div>
+                <div class="metric"><span class="metric-label">Suma de negativos</span><strong class="metric-value">@Model.SumaNegativos</strong></div>
+                <div class="metric"><span class="metric-label">Suma de positivos</span><strong class="metric-value">@Model.SumaPositivos</strong></div>
+            </div>
+            <h3>Vector (primeros 50 de @Model.Vector.Length)</h3>
+            <div class="data-strip">@string.Join(", ", Model.Vector.Take(50)) …</div>
+        </section>
+    }
+    <a class="back-link" asp-page="/Index">← Todas las prácticas</a>
+</section>

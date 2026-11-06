@@ -1,0 +1,36 @@
+@page
+@model Ejercicio10Model
+@{ ViewData["Title"] = "Ejercicio 10 - Producto invertido"; }
+<section class="exercise-page">
+    <header class="exercise-heading">
+        <p class="eyebrow">Práctica 10 · 20 posiciones</p>
+        <h1>Producto con un vector invertido</h1>
+        <p class="exercise-copy">Multiplica A[i] por el elemento de B en la posición opuesta y guarda cada producto en C.</p>
+    </header>
+    <partial name="_ExerciseError" model="Model.Error" />
+    <form method="post" class="exercise-form">
+        <div class="vector-input-grid">
+            <div><label asp-for="EntradaA" class="form-label">Vector A</label><textarea asp-for="EntradaA" class="form-control" rows="3" placeholder="20 números"></textarea><span class="form-hint">Exactamente 20 valores; vacío genera un ejemplo.</span></div>
+            <div><label asp-for="EntradaB" class="form-label">Vector B</label><textarea asp-for="EntradaB" class="form-control" rows="3" placeholder="20 números"></textarea><span class="form-hint">Exactamente 20 valores; vacío genera un ejemplo.</span></div>
+        </div>
+        <div class="form-actions">
+            <button class="btn btn-dark" asp-page-handler="Calcular">Multiplicar</button>
+            <button class="btn btn-outline-secondary" asp-page-handler="Generar">Generar ambos vectores</button>
+        </div>
+    </form>
+    @if (Model.Mostrar)
+    {
+        <section class="exercise-results" aria-labelledby="result-title">
+            <h2 id="result-title">Vector C</h2>
+            <div class="data-strip">@string.Join(", ", Model.C.Select(x => x.ToString("0.##")))</div>
+            <div class="table-responsive">
+                <table class="table table-sm table-striped data-table">
+                    <caption class="visually-hidden">Productos de A con las posiciones opuestas de B</caption>
+                    <thead><tr><th scope="col">Posición</th><th scope="col">A[i]</th><th scope="col">B invertido</th><th scope="col">C[i]</th></tr></thead>
+                    <tbody>@for (var i = 0; i < 20; i++) { <tr><th scope="row">@(i + 1)</th><td>@Model.A[i].ToString("0.##")</td><td>@Model.B[19 - i].ToString("0.##")</td><td><strong>@Model.C[i].ToString("0.##")</strong></td></tr> }</tbody>
+                </table>
+            </div>
+        </section>
+    }
+    <a class="back-link" asp-page="/Index">← Todas las prácticas</a>
+</section>

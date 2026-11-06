@@ -1,0 +1,46 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Inicio";
+}
+<section class="home-intro">
+    <p class="eyebrow">Programación · Colecciones</p>
+    <h1>Laboratorio de vectores</h1>
+    <p>Once prácticas para recorrer, comparar y transformar datos con C#.</p>
+</section>
+
+<section aria-labelledby="exercise-list-title">
+    <div class="section-heading">
+        <h2 id="exercise-list-title">Prácticas</h2>
+        <span>01 — 11</span>
+    </div>
+    <div class="exercise-grid">
+    @foreach (var e in new[]
+    {
+        new { Num = "01", Titulo = "Promedio de 50 valores", Desc = "Promedio, cantidad de valores mayores que el promedio y lista de esos valores.", Url = "/Ejercicio01" },
+        new { Num = "02", Titulo = "Suma A + B (45)", Desc = "Dos vectores de 45 elementos sumados en un vector C.", Url = "/Ejercicio02" },
+        new { Num = "03", Titulo = "Elemento mayor (20)", Desc = "Posición y valor del elemento mayor en un vector de 20.", Url = "/Ejercicio03" },
+        new { Num = "04", Titulo = "Cuadrado de 500 números", Desc = "Eleva al cuadrado 500 valores e imprime original y resultado.", Url = "/Ejercicio04" },
+        new { Num = "05", Titulo = "Conteo de 300 números", Desc = "Ceros, negativos, positivos, suma de negativos y de positivos.", Url = "/Ejercicio05" },
+        new { Num = "06", Titulo = "Inversión de 150 números", Desc = "150 valores en orden inverso en un segundo vector.", Url = "/Ejercicio06" },
+        new { Num = "07", Titulo = "¿Iguales o Diferentes? (100)", Desc = "Compara vectores M y N de 100 elementos.", Url = "/Ejercicio07" },
+        new { Num = "08", Titulo = "¿Ordenado ascendente? (100)", Desc = "Verifica si el vector de 100 elementos está ordenado. Responde SI / NO.", Url = "/Ejercicio08" },
+        new { Num = "09", Titulo = "Búsqueda secuencial (80)", Desc = "Busca un número en el vector X de 80 elementos. Responde posición o NO.", Url = "/Ejercicio09" },
+        new { Num = "10", Titulo = "A[i] × B invertido (20)", Desc = "Multiplica A con B en sentido inverso y guarda en C.", Url = "/Ejercicio10" },
+        new { Num = "11", Titulo = "Fibonacci FIB[100]", Desc = "Los 100 primeros números de la serie de Fibonacci.", Url = "/Ejercicio11" },
+    })
+    {
+        <article class="exercise-card">
+            <span class="exercise-number">@e.Num</span>
+            <h3>@e.Titulo</h3>
+            <p>@e.Desc</p>
+            <a asp-page="@e.Url">Abrir práctica <span aria-hidden="true">→</span></a>
+        </article>
+    }
+    </div>
+</section>
+
+<aside class="input-note">
+    <strong>Entrada de datos</strong>
+    <p>En cada práctica puedes escribir tus valores o dejar el campo vacío para generar un ejemplo. Se aceptan números separados por espacios, comas, punto y coma o saltos de línea.</p>
+</aside>

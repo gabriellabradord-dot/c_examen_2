@@ -1,0 +1,39 @@
+@page
+@model Ejercicio01Model
+@{
+    ViewData["Title"] = "Ejercicio 01 - Promedio de 50 valores";
+}
+<section class="exercise-page">
+    <header class="exercise-heading">
+        <p class="eyebrow">Práctica 01 · 50 datos</p>
+        <h1>Promedio y valores superiores</h1>
+        <p class="exercise-copy">Calcula el promedio del vector e identifica cuántos valores lo superan y cuáles son.</p>
+    </header>
+
+    <partial name="_ExerciseError" model="Model.Error" />
+    <form method="post" class="exercise-form">
+        <label asp-for="Entrada" class="form-label">Valores del vector</label>
+        <textarea asp-for="Entrada" class="form-control" rows="4" placeholder="Ejemplo: 12 18 24 30"></textarea>
+        <span class="form-hint">Escribe exactamente 50 números. Déjalo vacío para generar un ejemplo.</span>
+        <div class="form-actions">
+            <button class="btn btn-dark" asp-page-handler="Calcular">Calcular promedio</button>
+            <button class="btn btn-outline-secondary" asp-page-handler="Generar">Generar ejemplo</button>
+        </div>
+    </form>
+
+    @if (Model.Mostrar)
+    {
+        <section class="exercise-results" aria-labelledby="result-title">
+            <h2 id="result-title">Resultado</h2>
+            <div class="metric-grid">
+                <div class="metric"><span class="metric-label">Promedio</span><strong class="metric-value">@Model.Promedio.ToString("0.##")</strong></div>
+                <div class="metric"><span class="metric-label">Valores superiores</span><strong class="metric-value">@Model.CantidadMayores</strong></div>
+            </div>
+            <h3>Mayores que el promedio</h3>
+            <div class="data-strip">@string.Join(", ", Model.Resultado.Select(x => x.ToString("0.##")))</div>
+            <h3 class="mt-4">Vector completo</h3>
+            <div class="data-strip">@string.Join(", ", Model.Vector.Select(x => x.ToString("0.##")))</div>
+        </section>
+    }
+    <a class="back-link" asp-page="/Index">← Todas las prácticas</a>
+</section>

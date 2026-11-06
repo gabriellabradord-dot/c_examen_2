@@ -1,0 +1,17 @@
+﻿@page
+@model ErrorModel
+@{
+    ViewData["Title"] = "Ocurrió un error";
+}
+<section class="exercise-page">
+    <header class="exercise-heading">
+        <p class="eyebrow">No se pudo completar la solicitud</p>
+        <h1>@ViewData["Title"]</h1>
+        <p class="exercise-copy">Se produjo un problema al procesar la página. Inténtalo de nuevo o vuelve al inicio.</p>
+    </header>
+    @if (Model.ShowRequestId)
+    {
+        <p class="form-hint">Identificador de solicitud: <code>@Model.RequestId</code></p>
+    }
+    <a class="back-link" asp-page="/Index">← Volver al inicio</a>
+</section>

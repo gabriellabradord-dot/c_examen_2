@@ -1,0 +1,99 @@
+is_global = true
+build_property.TargetFramework = net10.0
+build_property.TargetFrameworkIdentifier = .NETCoreApp
+build_property.TargetFrameworkVersion = v10.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = c_examen_2
+build_property.RootNamespace = c_examen_2
+build_property.ProjectDir = /home/gabriel/Proyectos/c_examen_2/
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 9.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /home/gabriel/Proyectos/c_examen_2
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 10.0
+build_property.EnableCodeStyleSeverity = 
+
+[/home/gabriel/Proyectos/c_examen_2/Pages/Ejercicio01.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRWplcmNpY2lvMDEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/gabriel/Proyectos/c_examen_2/Pages/Ejercicio02.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRWplcmNpY2lvMDIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/gabriel/Proyectos/c_examen_2/Pages/Ejercicio03.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRWplcmNpY2lvMDMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/gabriel/Proyectos/c_examen_2/Pages/Ejercicio04.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRWplcmNpY2lvMDQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/gabriel/Proyectos/c_examen_2/Pages/Ejercicio05.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRWplcmNpY2lvMDUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/gabriel/Proyectos/c_examen_2/Pages/Ejercicio06.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRWplcmNpY2lvMDYuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/gabriel/Proyectos/c_examen_2/Pages/Ejercicio07.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRWplcmNpY2lvMDcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/gabriel/Proyectos/c_examen_2/Pages/Ejercicio08.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRWplcmNpY2lvMDguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/gabriel/Proyectos/c_examen_2/Pages/Ejercicio09.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRWplcmNpY2lvMDkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/gabriel/Proyectos/c_examen_2/Pages/Ejercicio10.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRWplcmNpY2lvMTAuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/gabriel/Proyectos/c_examen_2/Pages/Ejercicio11.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRWplcmNpY2lvMTEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/gabriel/Proyectos/c_examen_2/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/gabriel/Proyectos/c_examen_2/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/gabriel/Proyectos/c_examen_2/Pages/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/gabriel/Proyectos/c_examen_2/Pages/Shared/_ExerciseError.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19FeGVyY2lzZUVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/gabriel/Proyectos/c_examen_2/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/gabriel/Proyectos/c_examen_2/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/gabriel/Proyectos/c_examen_2/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/gabriel/Proyectos/c_examen_2/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-3is1b1lduh

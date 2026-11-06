@@ -1,0 +1,39 @@
+@page
+@model Ejercicio11Model
+@{ ViewData["Title"] = "Ejercicio 11 - Fibonacci"; }
+<section class="exercise-page">
+    <header class="exercise-heading">
+        <p class="eyebrow">Práctica 11 · 100 posiciones</p>
+        <h1>Serie de Fibonacci</h1>
+        <p class="exercise-copy">Genera los primeros 100 términos, donde cada término es la suma de los dos anteriores.</p>
+    </header>
+    <form method="post" class="exercise-form">
+        <p class="mb-0">La secuencia comienza con 0 y 1.</p>
+        <div class="form-actions"><button class="btn btn-dark" asp-page-handler="Calcular">Generar los 100 términos</button></div>
+    </form>
+    @if (Model.Mostrar)
+    {
+        <section class="exercise-results" aria-labelledby="result-title">
+            <h2 id="result-title">FIB[100]</h2>
+            <div class="table-responsive">
+                <table class="table table-sm table-striped data-table">
+                    <caption class="visually-hidden">Los 100 términos de la serie de Fibonacci</caption>
+                    <thead><tr><th scope="col">Fila</th>@for (var i = 0; i < 10; i++) { <th scope="col">@(i + 1)</th> }</tr></thead>
+                    <tbody>
+                        @for (var fila = 0; fila < 10; fila++)
+                        {
+                            <tr><th scope="row">@(fila + 1)</th>
+                                @for (var col = 0; col < 10; col++)
+                                {
+                                    var indice = fila * 10 + col;
+                                    <td>@Model.FIB[indice]</td>
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    }
+    <a class="back-link" asp-page="/Index">← Todas las prácticas</a>
+</section>

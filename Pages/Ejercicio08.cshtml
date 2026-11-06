@@ -1,0 +1,31 @@
+@page
+@model Ejercicio08Model
+@{ ViewData["Title"] = "Ejercicio 08 - Orden ascendente"; }
+<section class="exercise-page">
+    <header class="exercise-heading">
+        <p class="eyebrow">Práctica 08 · 100 posiciones</p>
+        <h1>Verificar orden ascendente</h1>
+        <p class="exercise-copy">Comprueba que cada elemento sea mayor o igual que el anterior.</p>
+    </header>
+    <partial name="_ExerciseError" model="Model.Error" />
+    <form method="post" class="exercise-form">
+        <label asp-for="Entrada" class="form-label">Valores del vector</label>
+        <textarea asp-for="Entrada" class="form-control" rows="3" placeholder="100 números"></textarea>
+        <span class="form-hint">Exactamente 100 valores; vacío genera un ejemplo sin ordenar.</span>
+        <div class="form-actions">
+            <button class="btn btn-dark" asp-page-handler="Calcular">Verificar orden</button>
+            <button class="btn btn-outline-secondary" asp-page-handler="GenerarSi">Generar ordenado</button>
+            <button class="btn btn-outline-secondary" asp-page-handler="GenerarNo">Generar desordenado</button>
+        </div>
+    </form>
+    @if (Model.Mostrar)
+    {
+        <section class="exercise-results" aria-labelledby="result-title">
+            <h2 id="result-title">Resultado</h2>
+            <div class="result-banner @(Model.Ordenado ? "" : "is-negative")">@Model.Mensaje</div>
+            <h3 class="mt-4">Vector (primeros 30 de @Model.Vector.Length)</h3>
+            <div class="data-strip">@string.Join(", ", Model.Vector.Take(30)) …</div>
+        </section>
+    }
+    <a class="back-link" asp-page="/Index">← Todas las prácticas</a>
+</section>

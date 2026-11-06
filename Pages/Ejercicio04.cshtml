@@ -1,0 +1,37 @@
+@page
+@model Ejercicio04Model
+@{
+    ViewData["Title"] = "Ejercicio 04 - Cuadrado de 500 números";
+}
+<section class="exercise-page">
+    <header class="exercise-heading">
+        <p class="eyebrow">Práctica 04 · 500 posiciones</p>
+        <h1>Cuadrado de cada valor</h1>
+        <p class="exercise-copy">Eleva cada entero al cuadrado y almacena los resultados en un segundo vector.</p>
+    </header>
+    <partial name="_ExerciseError" model="Model.Error" />
+    <form method="post" class="exercise-form">
+        <label asp-for="Entrada" class="form-label">Valores enteros del vector</label>
+        <textarea asp-for="Entrada" class="form-control" rows="4" placeholder="500 enteros"></textarea>
+        <span class="form-hint">Escribe exactamente 500 enteros; vacío genera un ejemplo.</span>
+        <div class="form-actions">
+            <button class="btn btn-dark" asp-page-handler="Calcular">Calcular cuadrados</button>
+            <button class="btn btn-outline-secondary" asp-page-handler="Generar">Generar ejemplo</button>
+        </div>
+    </form>
+    @if (Model.Mostrar)
+    {
+        <section class="exercise-results" aria-labelledby="result-title">
+            <h2 id="result-title">Vectores resultantes</h2>
+            <p class="form-hint">Vista de las primeras 50 posiciones de @Model.Original.Length.</p>
+            <div class="table-responsive">
+                <table class="table table-sm table-striped data-table">
+                    <caption class="visually-hidden">Primeros 50 valores y sus cuadrados</caption>
+                    <thead><tr><th scope="col">Posición</th><th scope="col">Original</th><th scope="col">Cuadrado</th></tr></thead>
+                    <tbody>@for (var i = 0; i < 50; i++) { <tr><th scope="row">@(i + 1)</th><td>@Model.Original[i]</td><td><strong>@Model.Cuadrados[i]</strong></td></tr> }</tbody>
+                </table>
+            </div>
+        </section>
+    }
+    <a class="back-link" asp-page="/Index">← Todas las prácticas</a>
+</section>

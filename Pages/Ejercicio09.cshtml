@@ -1,0 +1,41 @@
+@page
+@model Ejercicio09Model
+@{ ViewData["Title"] = "Ejercicio 09 - Búsqueda secuencial"; }
+<section class="exercise-page">
+    <header class="exercise-heading">
+        <p class="eyebrow">Práctica 09 · 80 posiciones</p>
+        <h1>Búsqueda secuencial</h1>
+        <p class="exercise-copy">Busca un valor de izquierda a derecha y muestra la posición de su primera aparición.</p>
+    </header>
+    <partial name="_ExerciseError" model="Model.Error" />
+    <form method="post" class="exercise-form">
+        <label asp-for="Entrada" class="form-label">Vector X</label>
+        <textarea asp-for="Entrada" class="form-control" rows="3" placeholder="80 números"></textarea>
+        <span class="form-hint">Exactamente 80 valores; vacío genera un ejemplo.</span>
+        <div class="mt-3">
+            <label asp-for="Buscado" class="form-label">Número que se buscará</label>
+            <input asp-for="Buscado" class="form-control" type="number" step="any" />
+        </div>
+        <div class="form-actions">
+            <button class="btn btn-dark" asp-page-handler="Buscar">Buscar valor</button>
+            <button class="btn btn-outline-secondary" asp-page-handler="Generar">Generar un caso de ejemplo</button>
+        </div>
+    </form>
+    @if (Model.Mostrar)
+    {
+        <section class="exercise-results" aria-labelledby="result-title">
+            <h2 id="result-title">Resultado</h2>
+            @if (Model.Encontrado)
+            {
+                <div class="result-banner">El número <strong>@Model.Buscado</strong> aparece en la posición <strong>@Model.Posicion</strong> (índice @Model.Indice).</div>
+            }
+            else
+            {
+                <div class="result-banner is-negative">No se encontró el número <strong>@Model.Buscado</strong>.</div>
+            }
+            <h3 class="mt-4">Vector (primeros 40 de @Model.Vector.Length)</h3>
+            <div class="data-strip">@string.Join(", ", Model.Vector.Take(40)) …</div>
+        </section>
+    }
+    <a class="back-link" asp-page="/Index">← Todas las prácticas</a>
+</section>

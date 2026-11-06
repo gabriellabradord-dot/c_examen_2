@@ -1,0 +1,38 @@
+@page
+@model Ejercicio02Model
+@{
+    ViewData["Title"] = "Ejercicio 02 - Suma de vectores A y B (45)";
+}
+<section class="exercise-page">
+    <header class="exercise-heading">
+        <p class="eyebrow">Práctica 02 · 45 posiciones</p>
+        <h1>Suma de dos vectores</h1>
+        <p class="exercise-copy">Suma cada posición de A con la posición correspondiente de B y guarda el resultado en C.</p>
+    </header>
+    <partial name="_ExerciseError" model="Model.Error" />
+    <form method="post" class="exercise-form">
+        <div class="vector-input-grid">
+            <div><label asp-for="EntradaA" class="form-label">Vector A</label><textarea asp-for="EntradaA" class="form-control" rows="3" placeholder="45 números"></textarea><span class="form-hint">Exactamente 45 valores; vacío genera un ejemplo.</span></div>
+            <div><label asp-for="EntradaB" class="form-label">Vector B</label><textarea asp-for="EntradaB" class="form-control" rows="3" placeholder="45 números"></textarea><span class="form-hint">Exactamente 45 valores; vacío genera un ejemplo.</span></div>
+        </div>
+        <div class="form-actions">
+            <button class="btn btn-dark" asp-page-handler="Calcular">Sumar A + B</button>
+            <button class="btn btn-outline-secondary" asp-page-handler="Generar">Generar ambos vectores</button>
+        </div>
+    </form>
+    @if (Model.Mostrar)
+    {
+        <section class="exercise-results" aria-labelledby="result-title">
+            <h2 id="result-title">Vector C = A + B</h2>
+            <div class="data-strip">@string.Join(", ", Model.C.Select(x => x.ToString("0.##")))</div>
+            <div class="table-responsive">
+                <table class="table table-sm table-striped data-table">
+                    <caption class="visually-hidden">Valores de A, B y su suma</caption>
+                    <thead><tr><th scope="col">Posición</th><th scope="col">A[i]</th><th scope="col">B[i]</th><th scope="col">C[i]</th></tr></thead>
+                    <tbody>@for (var i = 0; i < Model.C.Length; i++) { <tr><th scope="row">@(i + 1)</th><td>@Model.A[i].ToString("0.##")</td><td>@Model.B[i].ToString("0.##")</td><td><strong>@Model.C[i].ToString("0.##")</strong></td></tr> }</tbody>
+                </table>
+            </div>
+        </section>
+    }
+    <a class="back-link" asp-page="/Index">← Todas las prácticas</a>
+</section>
