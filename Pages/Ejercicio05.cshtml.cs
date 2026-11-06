@@ -1,9 +1,13 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc;
+
 namespace c_examen_2.Pages;
+
 public class Ejercicio05Model : PageModel
 {
-    [BindProperty] public string? Entrada { get; set; }
+    [BindProperty]
+    public string? Entrada { get; set; }
+
     public int[] Vector { get; set; } = Array.Empty<int>();
     public int Ceros { get; set; }
     public int Negativos { get; set; }
@@ -12,23 +16,54 @@ public class Ejercicio05Model : PageModel
     public long SumaPositivos { get; set; }
     public bool Mostrar { get; set; }
     public string? Error { get; set; }
+
     public void OnPostCalcular()
     {
-        if (string.IsNullOrWhiteSpace(Entrada)) Vector = Vectores.GenerarInts(300, -100, 100);
-        else if (!Vectores.TryParseInts(Entrada, 300, out var valores, out var error)) { Error = error; return; }
-        else Vector = valores;
+        if (string.IsNullOrWhiteSpace(Entrada))
+        {
+            Vector = Vectores.GenerarInts(300, -100, 100);
+        }
+        else if (!Vectores.TryParseInts(Entrada, 300, out var valores, out var error))
+        {
+            Error = error;
+            return;
+        }
+        else
+        {
+            Vector = valores;
+        }
 
-        Ceros = Vector.Count(x => x == 0);
-        Negativos = Vector.Count(x => x < 0);
-        Positivos = Vector.Count(x => x > 0);
-        SumaNegativos = Vector.Where(x => x < 0).Sum(x => (long)x);
-        SumaPositivos = Vector.Where(x => x > 0).Sum(x => (long)x);
+        Ceros = 0;
+        Negativos = 0;
+        Positivos = 0;
+        SumaNegativos = 0;
+        SumaPositivos = 0;
+
+        foreach (int valor in Vector)
+        {
+            if (valor == 0)
+            {
+                Ceros++;
+            }
+            else if (valor < 0)
+            {
+                Negativos++;
+                SumaNegativos += valor;
+            }
+            else
+            {
+                Positivos++;
+                SumaPositivos += valor;
+            }
+        }
+
         Mostrar = true;
     }
 
     public void OnPostGenerar()
     {
-        Entrada = string.Join(" ", Vectores.GenerarInts(300, -100, 100));
+        Vector = Vectores.GenerarInts(300, -100, 100);
+        Entrada = string.Join(" ", Vector);
         OnPostCalcular();
     }
 }

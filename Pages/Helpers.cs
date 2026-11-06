@@ -1,3 +1,5 @@
+using System.Globalization;
+
 namespace c_examen_2.Pages;
 
 public static class Vectores
@@ -8,15 +10,27 @@ public static class Vectores
     {
         valores = Array.Empty<double>();
         error = string.Empty;
-        var partes = Separar(texto);
-        var resultado = new double[partes.Length];
+        string[] partes = Separar(texto);
+        double[] resultado = new double[partes.Length];
 
         for (var i = 0; i < partes.Length; i++)
         {
-            if (!double.TryParse(partes[i], System.Globalization.NumberStyles.Float,
-                    System.Globalization.CultureInfo.CurrentCulture, out resultado[i]) &&
-                !double.TryParse(partes[i], System.Globalization.NumberStyles.Float,
-                    System.Globalization.CultureInfo.InvariantCulture, out resultado[i]))
+            bool esNumeroValido = double.TryParse(
+                partes[i],
+                NumberStyles.Float,
+                CultureInfo.CurrentCulture,
+                out resultado[i]);
+
+            if (!esNumeroValido)
+            {
+                esNumeroValido = double.TryParse(
+                    partes[i],
+                    NumberStyles.Float,
+                    CultureInfo.InvariantCulture,
+                    out resultado[i]);
+            }
+
+            if (!esNumeroValido)
             {
                 error = $"«{partes[i]}» no es un número válido.";
                 return false;
@@ -43,15 +57,27 @@ public static class Vectores
     {
         valores = Array.Empty<int>();
         error = string.Empty;
-        var partes = Separar(texto);
-        var resultado = new int[partes.Length];
+        string[] partes = Separar(texto);
+        int[] resultado = new int[partes.Length];
 
         for (var i = 0; i < partes.Length; i++)
         {
-            if (!int.TryParse(partes[i], System.Globalization.NumberStyles.Integer,
-                    System.Globalization.CultureInfo.CurrentCulture, out resultado[i]) &&
-                !int.TryParse(partes[i], System.Globalization.NumberStyles.Integer,
-                    System.Globalization.CultureInfo.InvariantCulture, out resultado[i]))
+            bool esNumeroValido = int.TryParse(
+                partes[i],
+                NumberStyles.Integer,
+                CultureInfo.CurrentCulture,
+                out resultado[i]);
+
+            if (!esNumeroValido)
+            {
+                esNumeroValido = int.TryParse(
+                    partes[i],
+                    NumberStyles.Integer,
+                    CultureInfo.InvariantCulture,
+                    out resultado[i]);
+            }
+
+            if (!esNumeroValido)
             {
                 error = $"«{partes[i]}» no es un número entero válido.";
                 return false;
@@ -72,15 +98,27 @@ public static class Vectores
     {
         valores = Array.Empty<long>();
         error = string.Empty;
-        var partes = Separar(texto);
-        var resultado = new long[partes.Length];
+        string[] partes = Separar(texto);
+        long[] resultado = new long[partes.Length];
 
         for (var i = 0; i < partes.Length; i++)
         {
-            if (!long.TryParse(partes[i], System.Globalization.NumberStyles.Integer,
-                    System.Globalization.CultureInfo.CurrentCulture, out resultado[i]) &&
-                !long.TryParse(partes[i], System.Globalization.NumberStyles.Integer,
-                    System.Globalization.CultureInfo.InvariantCulture, out resultado[i]))
+            bool esNumeroValido = long.TryParse(
+                partes[i],
+                NumberStyles.Integer,
+                CultureInfo.CurrentCulture,
+                out resultado[i]);
+
+            if (!esNumeroValido)
+            {
+                esNumeroValido = long.TryParse(
+                    partes[i],
+                    NumberStyles.Integer,
+                    CultureInfo.InvariantCulture,
+                    out resultado[i]);
+            }
+
+            if (!esNumeroValido)
             {
                 error = $"«{partes[i]}» no es un número entero válido.";
                 return false;
@@ -98,29 +136,50 @@ public static class Vectores
     }
 
     private static string[] Separar(string? texto)
-        => string.IsNullOrWhiteSpace(texto)
-            ? Array.Empty<string>()
-            : texto.Split(Separadores, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+    {
+        if (string.IsNullOrWhiteSpace(texto))
+        {
+            return Array.Empty<string>();
+        }
+
+        return texto.Split(
+            Separadores,
+            StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+    }
 
     public static double[] GenerarDobles(int n, int min = 1, int max = 100)
     {
-        var a = new double[n];
-        for (int i = 0; i < n; i++) a[i] = Random.Shared.Next(min, max + 1);
-        return a;
+        double[] valores = new double[n];
+
+        for (int i = 0; i < n; i++)
+        {
+            valores[i] = Random.Shared.Next(min, max + 1);
+        }
+
+        return valores;
     }
 
     public static int[] GenerarInts(int n, int min = -50, int max = 100)
     {
-        var a = new int[n];
-        for (int i = 0; i < n; i++) a[i] = Random.Shared.Next(min, max + 1);
-        return a;
+        int[] valores = new int[n];
+
+        for (int i = 0; i < n; i++)
+        {
+            valores[i] = Random.Shared.Next(min, max + 1);
+        }
+
+        return valores;
     }
 
     public static long[] GenerarLongs(int n, int min = 1, int max = 100)
     {
-        var a = new long[n];
-        for (int i = 0; i < n; i++) a[i] = Random.Shared.Next(min, max + 1);
-        return a;
-    }
+        long[] valores = new long[n];
 
+        for (int i = 0; i < n; i++)
+        {
+            valores[i] = Random.Shared.Next(min, max + 1);
+        }
+
+        return valores;
+    }
 }

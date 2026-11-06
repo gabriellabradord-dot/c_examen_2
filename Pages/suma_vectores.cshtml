@@ -1,0 +1,54 @@
+﻿@page
+@model MyApp.Namespace.suma_matriz_inputModel
+@{
+    ViewData["Title"] = "Suma de Matriz Dinámica";
+}
+
+<div class="container mt-4">
+    <h3>Suma de Matriz Fila por Fila (Ingresar Datos)</h3>
+    <p class="text-muted">Introduce los números en la matriz y presiona el botón para calcular.</p>
+
+    <form method="post">
+        <div class="card mb-3 w-50">
+            <div class="card-header bg-primary text-white">
+                <strong>Matriz de Entrada (2x3)</strong>
+            </div>
+            <div class="card-body p-2">
+                <table class="table table-bordered text-center m-0">
+                    @for (int i = 0; i < 2; i++)
+                    {
+                        <tr>
+                            @for (int j = 0; j < 3; j++)
+                            {
+                                <td>
+                                    <input type="number" name="numeros[@i][@j]"
+                                           value="@Model.numeros[i][j]"
+                                           class="form-control text-center" required />
+                                </td>
+                            }
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-success mb-3">Calcular Sumas</button>
+    </form>
+
+    @if (Model.datosEnviados)
+    {
+        <div class="card w-50">
+            <div class="card-header bg-dark text-white">
+                <strong>Resultados por Fila</strong>
+            </div>
+            <ul class="list-group list-group-flush">
+                @foreach (var operacion in Model.operacionesPorFila)
+                {
+                    <li class="list-group-item fs-5">
+                        @operacion
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+</div>
