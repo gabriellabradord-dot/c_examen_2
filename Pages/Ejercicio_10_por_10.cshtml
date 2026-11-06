@@ -1,0 +1,45 @@
+﻿@page
+@model Ejercicio_10_por_10Model
+@{
+    ViewData["Title"] = "Ejercicio 10x10 - Mayor de la matriz";
+}
+<section class="exercise-page">
+    <header class="exercise-heading">
+        <p class="eyebrow">Práctica 10 × 10</p>
+        <h1>Mayor de una matriz</h1>
+        <p class="exercise-copy">Llena una matriz de 10 × 10 y determina la posición del número mayor.</p>
+    </header>
+    <partial name="_ExerciseError" model="Model.Error" />
+    <form method="post" class="exercise-form">
+        <label asp-for="Entrada" class="form-label">Matriz 10 × 10</label>
+        <textarea asp-for="Entrada" class="form-control" rows="5" placeholder="100 números"></textarea>
+        <span class="form-hint">Se requieren 100 valores; si dejas vacío se genera una prueba.</span>
+        <div class="form-actions">
+            <button class="btn btn-dark" asp-page-handler="Calcular">Buscar mayor</button>
+            <button class="btn btn-outline-secondary" asp-page-handler="Generar">Generar prueba</button>
+        </div>
+    </form>
+    @if (Model.Mostrar)
+    {
+        <section class="exercise-results" aria-labelledby="result-title">
+            <h2 id="result-title">Resultado</h2>
+            <div class="result-banner">El mayor es <strong>@Model.Mayor</strong> y está en la fila <strong>@(Model.FilaMayor + 1)</strong>, columna <strong>@(Model.ColumnaMayor + 1)</strong>.</div>
+            <div class="table-responsive mt-4">
+                <table class="table table-sm table-striped data-table">
+                    <tbody>
+                        @for (var fila = 0; fila < 10; fila++)
+                        {
+                            <tr>
+                                @for (var columna = 0; columna < 10; columna++)
+                                {
+                                    <td>@Model.Matriz[fila, columna]</td>
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    }
+    <a class="back-link" asp-page="/Index">← Todas las prácticas</a>
+</section>
